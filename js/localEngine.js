@@ -3,12 +3,13 @@ var encodedLocalMusic = localMusic.map(item => ({
   artist: item.artist,
   url: encodeNonAscii(item.url),
   cover: encodeNonAscii(item.cover),
-  lrc: encodeNonAscii(item.lrc)
+  lrc: item.lrc ? encodeNonAscii(item.lrc) : null
 }));
 
 document.getElementById('heoMusic-page').classList.add('localMusic');
 
 function encodeNonAscii(str) {
+  if (!str) return null;
   return str.replace(/[^\x00-\x7F]/g, function(c) {
     return encodeURIComponent(c);
   });
