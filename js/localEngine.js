@@ -3,8 +3,10 @@ var encodedLocalMusic = localMusic.map(item => ({
   artist: item.artist,
   url: encodeNonAscii(item.url),
   cover: encodeNonAscii(item.cover),
-  lrc: item.lrc ? encodeNonAscii(item.lrc) : null
+  lrc: item.lrc
 }));
+
+console.log('Local music config:', encodedLocalMusic);
 
 document.getElementById('heoMusic-page').classList.add('localMusic');
 
